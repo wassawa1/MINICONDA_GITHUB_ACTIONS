@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        python-version: ["3.8", "3.9", "3.10"]
+        python-version: ["3.8", "3.9", "3.10", "3.11"]
 
     steps:
       - name: Check out repository
@@ -20,7 +20,11 @@ jobs:
           auto-update-conda: true
           python-version: ${{ matrix.python-version }}
           activate-environment: test-env
-          environment-file: environment.yml
+
+      - name: Install dependencies
+        run: |
+          conda install pip
+          pip install -r requirements.txt
 
       - name: Display Python version
         run: python --version
