@@ -3,7 +3,7 @@ name: Miniconda with Multiple Python Versions
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   test:
